@@ -50,6 +50,11 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val coffeeId = arguments?.getInt(COFFEE_ID, 0) ?: 0
         setCoffeeData(coffeeId)
+
+        val backButton = view.findViewById<Button>(R.id.back_button)
+        backButton.setOnClickListener{
+            findNavController().navigateUp()
+        }
     }
 
     fun setCoffeeData(id: Int){
@@ -69,7 +74,16 @@ class DetailFragment : Fragment() {
                 coffeeDesc?.text = getString(R.string.latte_desc)
             }
 
+            R.id.matcha -> {
+                coffeeTitle?.text = getString(R.string.matcha_title)
+                coffeeDesc?.text = getString(R.string.matcha_desc)
+            }
 
+
+            R.id.long_black -> {
+                coffeeTitle?.text = getString(R.string.long_title)
+                coffeeDesc?.text = getString(R.string.long_desc)
+            }
         }
     }
 
